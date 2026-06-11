@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🧠 SmartMind AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+  <div class="logo">🧠 SmartMind AI</div>
+
+  <nav>
+    <button class="nav-btn active" data-section="add">Add</button>
+    <button class="nav-btn" data-section="search">Search</button>
+    <button class="nav-btn" data-section="summary">Summary</button>
+    <button class="nav-btn" data-section="reminders">Reminders</button>
+    <button class="nav-btn" data-section="all">All</button>
+  </nav>
+
+  <button id="darkToggle">🌙</button>
+</header>
+
+<main>
+
+  <!-- ADD MEMORY -->
+  <section id="sec-add" class="section active">
+    <h2>Add Memory</h2>
+
+    <div class="card">
+      <textarea id="memText" placeholder="Write or speak your memory..."></textarea>
+
+      <div class="three-col">
+        <input type="date" id="memDate">
+        <input type="time" id="memTime">
+        <input type="text" id="memPerson" placeholder="Person (optional)">
+      </div>
+
+      <div class="actions">
+        <button class="btn-primary" id="btnSave">Save</button>
+        <button class="btn-secondary" id="btnVoice">🎤 Voice Input</button>
+      </div>
+
+      <div id="voiceStatus" class="voice-status hidden">Listening...</div>
+      <div id="addResult" class="result-box hidden"></div>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <section id="sec-search" class="section">
+    <h2>Search Memories</h2>
+
+    <div class="card">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search anything...">
+        <button class="btn-primary" id="btnSearch">Search</button>
+      </div>
+
+      <div class="filter-row">
+        <select id="filterEmotion">
+          <option value="">All Emotions</option>
+          <option value="happy">Happy</option>
+          <option value="stress">Stress</option>
+          <option value="sad">Sad</option>
+          <option value="productive">Productive</option>
+        </select>
+
+        <input type="date" id="filterDate">
+        <button class="btn-ghost" id="btnClearFilters">Clear</button>
+      </div>
+
+      <div id="searchResults"></div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="sec-summary" class="section">
+    <h2>Daily Summary</h2>
+
+    <div class="card">
+      <input type="date" id="summaryDate">
+      <button class="btn-primary" id="btnSummary">Get Summary</button>
+
+      <div id="summaryResult"></div>
+    </div>
+  </section>
+
+  <!-- REMINDERS -->
+  <section id="sec-reminders" class="section">
+    <h2>Reminders</h2>
+    <div id="reminderList"></div>
+  </section>
+
+  <!-- ALL MEMORIES -->
+  <section id="sec-all" class="section">
+    <h2>All Memories</h2>
+    <div id="allMemories"></div>
+  </section>
+
+</main>
+
+<!-- JS -->
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
